@@ -8,8 +8,7 @@ import DatePicker from '../forms/Calendar';
 import apiService from '@/app/services/apiService';
 import useLoginModal from '@/app/hooks/useLoginModal';
 
-import {toast, ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "sonner";
 
 
 const initialDateRange = {
@@ -62,7 +61,6 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
 
                 if (response.success) {
                     toast.success('Reserva realizada con éxito', {
-                        autoClose: 3000,
                         position: "bottom-left",
                     });
                     setTimeout(() => {
@@ -184,7 +182,6 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
 
                 <p>${totalPrice}</p>
             </div>
-            <ToastContainer/>
         </aside>
     )
 }

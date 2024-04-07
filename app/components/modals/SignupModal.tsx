@@ -31,11 +31,12 @@ const SignupModal = () => {
         const response = await apiService.postWithoutToken('/api/auth/register/', JSON.stringify(formData));
 
         if (response.access) {
-            handleLogin(response.user.pk, response.access, response.refresh);
+            await handleLogin(response.user.pk, response.access, response.refresh);
 
             signupModal.close();
 
             router.push('/')
+            window.location.reload();
         } else {
             const tmpErrors: string[] = Object.values(response).map((error: any) => {
                 return error;

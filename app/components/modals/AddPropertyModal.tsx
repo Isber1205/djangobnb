@@ -6,8 +6,7 @@ import React, {ChangeEvent, useState} from "react";
 import Modal from './Modal';
 import CustomButton from '../forms/CustomButton';
 import Categories from '../addproperty/Categories';
-import {toast, ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "sonner";
 
 import useAddPropertyModal from '@/app/hooks/useAddPropertyModal';
 import SelectCountry, {SelectCountryValue} from '../forms/SelectCountry';
@@ -54,7 +53,6 @@ const AddPropertyModal = () => {
     // Submit
 
     const submitForm = async () => {
-        console.log('submitForm');
 
         if (
             dataCategory &&
@@ -80,11 +78,10 @@ const AddPropertyModal = () => {
 
             if (response.success) {
                 toast.success('Propiedad agregada correctamente', {
-                    autoClose: 3000,
                     position: "bottom-left",
                 });
 
-                router.push('/');
+                router.push('/?added=true');
 
                 addPropertyModal.close();
             } else {
@@ -291,7 +288,6 @@ const AddPropertyModal = () => {
                 label={"Add Property"}
                 content={content}
             />
-            <ToastContainer/>
         </>
     )
 }

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 import Navbar from "@/app/components/navbar/Navbar";
+import SearchModal from "@/app/components/modals/SearchModal";
 
 import LoginModal from "./components/modals/LoginModal";
 import SignupModal from "./components/modals/SignupModal";
@@ -28,8 +30,9 @@ export default function RootLayout({
         <div className="pt-32">
           {children}
         </div>
-
+        <Toaster />
         <LoginModal />
+        <SearchModal />
         <SignupModal />
         <AddPropertyModal />
 

@@ -17,7 +17,7 @@ const LoginModal = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState<string[]>([]);
 
-        // Submit functionality
+    // Submit functionality
 
     const submitLogin = async () => {
         const formData = {
@@ -28,11 +28,13 @@ const LoginModal = () => {
         const response = await apiService.postWithoutToken('/api/auth/login/', JSON.stringify(formData));
 
         if (response.access) {
-            handleLogin(response.user.pk, response.access, response.refresh);
+            await handleLogin(response.user.pk, response.access, response.refresh);
 
             loginModal.close();
 
             router.push('/')
+            window.location.reload();
+
         } else {
             setErrors(response.non_field_errors);
         }
